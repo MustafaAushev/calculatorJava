@@ -92,7 +92,15 @@ class CalculatorPanel extends JPanel {
         if(lastCommand.equals("+")) result += x;
         else if(lastCommand.equals("-")) result = (Math.abs(Math.round((result - x)*temp)/temp2 - (result - x)) < (1/temp2)) ? Math.round((result - x)*temp)/temp2 : (result - x);
         else if(lastCommand.equals("*")) result = (Math.abs(Math.round((result * x)*temp)/temp2 - (result * x)) < (1/temp2)) ? Math.round((result * x)*temp)/temp2 : (result * x);
-        else if(lastCommand.equals("/")) result /= (Math.abs(Math.round((result / x)*temp)/temp2 - (result / x)) < (1/temp2)) ? Math.round((result / x)*temp)/temp2 : (result / x);
+        else if(lastCommand.equals("/"))
+        {
+            if (x == 0.0)
+                {
+                    display.setText("Error");
+                    return;
+                }
+            result = (Math.abs(Math.round((result / x)*temp)/temp2 - (result / x)) < (1/temp2)) ? Math.round((result / x)*temp)/temp2 : (result / x);
+        }
         else if(lastCommand.equals("=")) result = x;
         display.setText("" + result);
     }
