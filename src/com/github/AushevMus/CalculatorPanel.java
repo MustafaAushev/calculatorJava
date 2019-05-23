@@ -67,21 +67,9 @@ class CalculatorPanel extends JPanel {
         public void actionPerformed(ActionEvent event)
         {
             String command = event.getActionCommand();
-            if(start)
-            {
-                if(command.equals("-"))
-                {
-                    display.setText(command);
-                    start = false;
-                }
-                else lastCommand = command;
-            }
-            else
-            {
-                calculate(Double.parseDouble(display.getText()));
-                lastCommand = command;
-                start=true;
-            }
+            calculate(Double.parseDouble(display.getText()));
+            lastCommand = command;
+            start=true;
         }
     }
 
